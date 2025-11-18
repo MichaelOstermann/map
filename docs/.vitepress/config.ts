@@ -2,9 +2,9 @@ import { defineConfig } from "vitepress"
 import { groupIconMdPlugin, groupIconVitePlugin } from "vitepress-plugin-group-icons"
 
 export default defineConfig({
-    base: "/NAME/",
-    description: "DESC",
-    title: "NAME",
+    base: "/map/",
+    description: "Functional utilities for maps.",
+    title: "map",
     markdown: {
         theme: {
             dark: "catppuccin-macchiato",
@@ -24,8 +24,44 @@ export default defineConfig({
         search: {
             provider: "local",
         },
+        sidebar: [
+            {
+                base: "/Map/",
+                text: "Map",
+                items: [
+                    { link: "create", text: "create" },
+                    { link: "clone", text: "clone" },
+                    { link: "compact", text: "compact" },
+                    { link: "filter", text: "filter" },
+                    { link: "forEach", text: "forEach" },
+                    { link: "get", text: "get" },
+                    { link: "getOr", text: "getOr" },
+                    { link: "getOrElse", text: "getOrElse" },
+                    { link: "getOrThrow", text: "getOrThrow" },
+                    { link: "has", text: "has" },
+                    { link: "hasAll", text: "hasAll" },
+                    { link: "hasAny", text: "hasAny" },
+                    { link: "hasNone", text: "hasNone" },
+                    { link: "isEmpty", text: "isEmpty" },
+                    { link: "isMap", text: "isMap" },
+                    { link: "isShallowEqual", text: "isShallowEqual" },
+                    { link: "map", text: "map" },
+                    { link: "mapEach", text: "mapEach" },
+                    { link: "mapOr", text: "mapOr" },
+                    { link: "mapOrElse", text: "mapOrElse" },
+                    { link: "mapOrThrow", text: "mapOrThrow" },
+                    { link: "reject", text: "reject" },
+                    { link: "remove", text: "remove" },
+                    { link: "removeAll", text: "removeAll" },
+                    { link: "removeOr", text: "removeOr" },
+                    { link: "removeOrElse", text: "removeOrElse" },
+                    { link: "removeOrThrow", text: "removeOrThrow" },
+                    { link: "set", text: "set" },
+                ],
+            },
+        ],
         socialLinks: [
-            { icon: "github", link: "https://github.com/MichaelOstermann/NAME" },
+            { icon: "github", link: "https://github.com/MichaelOstermann/map" },
         ],
     },
     vite: {

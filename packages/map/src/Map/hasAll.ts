@@ -1,0 +1,58 @@
+import { dfdlT } from "@monstermann/dfdl"
+
+/**
+ * `Map.hasAll(map, keys)`
+ *
+ * Checks if `map` contains all of the specified `keys`. This function supports iterables.
+ *
+ * ## Example
+ *
+ * ```ts
+ * Map.hasAll(
+ *     Map.create([
+ *         ["a", 1],
+ *         ["b", 2],
+ *         ["c", 3],
+ *     ]),
+ *     ["a", "b"],
+ * ); // true
+ *
+ * Map.hasAll(
+ *     Map.create([
+ *         ["a", 1],
+ *         ["b", 2],
+ *         ["c", 3],
+ *     ]),
+ *     ["a", "d"],
+ * ); // false
+ * ```
+ *
+ * ```ts
+ * pipe(
+ *     Map.create([
+ *         ["a", 1],
+ *         ["b", 2],
+ *         ["c", 3],
+ *     ]),
+ *     Map.hasAll(["a", "b"]),
+ * ); // true
+ *
+ * pipe(
+ *     Map.create([
+ *         ["a", 1],
+ *         ["b", 2],
+ *         ["c", 3],
+ *     ]),
+ *     Map.hasAll(["a", "d"]),
+ * ); // false
+ * ```
+ */
+export const hasAll: {
+    <K, V>(keys: Iterable<NoInfer<K>>): (target: ReadonlyMap<K, V>) => boolean
+    <K, V>(target: ReadonlyMap<K, V>, keys: Iterable<NoInfer<K>>): boolean
+} = dfdlT(<K, V>(target: ReadonlyMap<K, V>, keys: Iterable<NoInfer<K>>): boolean => {
+    for (const key of keys) {
+        if (!target.has(key)) return false
+    }
+    return true
+}, 2)

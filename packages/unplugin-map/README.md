@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>map</h1>
+<h1>unplugin-map</h1>
 
 **Functional utilities for maps.**
 
