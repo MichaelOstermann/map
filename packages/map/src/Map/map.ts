@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.map(map, key, transform)`
- *
- * Transforms the value at `key` in `map` using `transform`, returning a new map if the value changes.
+ * ```ts
+ * function Map.map(map, key, transform)
+ * ```
  *
  * ## Example
  *

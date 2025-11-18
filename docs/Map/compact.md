@@ -1,15 +1,15 @@
 # compact
 
-`compact(map)`
-
-Removes all nullable values from `map`.
+```ts
+function Map.compact(map)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.compact(
     new Map([
@@ -21,7 +21,7 @@ Map.compact(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

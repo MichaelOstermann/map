@@ -1,15 +1,15 @@
 # set
 
-`set(map, key, value)`
-
-Sets the `value` for the specified `key` in `map`, returning a new map if the value changes.
+```ts
+function Map.set(map, key, value)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.set(
     new Map([
@@ -31,7 +31,7 @@ Map.set(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

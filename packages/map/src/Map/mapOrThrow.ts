@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.mapOrThrow(map, key, transform)`
- *
- * Transforms the value at `key` in `map` using `transform`, throwing an error if the key doesn't exist.
+ * ```ts
+ * function Map.mapOrThrow(map, key, transform)
+ * ```
  *
  * ## Example
  *

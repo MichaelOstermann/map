@@ -2,9 +2,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.remove(map, key)`
- *
- * Removes the entry with the specified `key` from `map`, returning a new map.
+ * ```ts
+ * function Map.remove(map, key)
+ * ```
  *
  * ## Example
  *

@@ -1,15 +1,15 @@
 # hasAny
 
-`hasAny(map, keys)`
-
-Checks if `map` contains any of the specified `keys`. This function supports iterables.
+```ts
+function Map.hasAny(map, keys)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.hasAny(
     new Map([
@@ -29,7 +29,7 @@ Map.hasAny(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

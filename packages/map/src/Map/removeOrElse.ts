@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.removeOrElse(map, key, orElse)`
- *
- * Removes the entry with the specified `key` from `map`, calling `orElse` with the map if the key doesn't exist.
+ * ```ts
+ * function Map.removeOrElse(map, key, orElse)
+ * ```
  *
  * ## Example
  *

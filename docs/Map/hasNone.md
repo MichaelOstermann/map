@@ -1,15 +1,15 @@
 # hasNone
 
-`hasNone(map, keys)`
-
-Checks if `map` contains none of the specified `keys`. This function supports iterables.
+```ts
+function Map.hasNone(map, keys)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.hasNone(
     new Map([
@@ -29,7 +29,7 @@ Map.hasNone(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

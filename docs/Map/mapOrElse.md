@@ -1,15 +1,15 @@
 # mapOrElse
 
-`mapOrElse(map, key, transform, orElse)`
-
-Transforms the value at `key` in `map` using `transform`, calling `orElse` with the map if the key doesn't exist.
+```ts
+function Map.mapOrElse(map, key, transform, orElse)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.mapOrElse(
     new Map([
@@ -33,7 +33,7 @@ Map.mapOrElse(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

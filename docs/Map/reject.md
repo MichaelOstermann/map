@@ -1,15 +1,15 @@
 # reject
 
-`reject(map, by)`
-
-Rejects entries from `map` where `by` returns true for the value.
+```ts
+function Map.reject(map, by)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.reject(
     new Map([
@@ -22,7 +22,7 @@ Map.reject(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

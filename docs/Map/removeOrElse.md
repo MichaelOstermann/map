@@ -1,15 +1,15 @@
 # removeOrElse
 
-`removeOrElse(map, key, orElse)`
-
-Removes the entry with the specified `key` from `map`, calling `orElse` with the map if the key doesn't exist.
+```ts
+function Map.removeOrElse(map, key, orElse)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.removeOrElse(
     new Map([
@@ -31,7 +31,7 @@ Map.removeOrElse(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

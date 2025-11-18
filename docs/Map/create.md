@@ -1,13 +1,13 @@
 # create
 
-`create(iterable?)`
-
-Creates a new Map, an alias for `new Map(iterable?)`.
+```ts
+function Map.create(iterable?)
+```
 
 ## Example
 
 ```ts
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.create([
     ["a", 1],

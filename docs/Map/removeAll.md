@@ -1,15 +1,15 @@
 # removeAll
 
-`removeAll(map, keys)`
-
-Removes all entries with the specified `keys` from `map`, returning a new map. This function supports iterables.
+```ts
+function Map.removeAll(map, keys)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.removeAll(
     new Map([
@@ -31,7 +31,7 @@ Map.removeAll(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

@@ -1,15 +1,15 @@
 # remove
 
-`remove(map, key)`
-
-Removes the entry with the specified `key` from `map`, returning a new map.
+```ts
+function Map.remove(map, key)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.remove(
     new Map([
@@ -29,7 +29,7 @@ Map.remove(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

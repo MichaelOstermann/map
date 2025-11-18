@@ -1,15 +1,15 @@
 # forEach
 
-`forEach(map, fn)`
-
-Executes `fn` for each entry in `map` and returns the original map.
+```ts
+function Map.forEach(map, fn)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.forEach(
     new Map([
@@ -21,7 +21,7 @@ Map.forEach(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

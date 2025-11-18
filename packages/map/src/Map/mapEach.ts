@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.mapEach(map, fn)`
- *
- * Maps each value in `map` using `fn`, returning a new map with the transformed values.
+ * ```ts
+ * function Map.mapEach(map, fn)
+ * ```
  *
  * ## Example
  *

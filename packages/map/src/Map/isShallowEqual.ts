@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.isShallowEqual(map, source)`
- *
- * Checks if `map` is shallow equal to `source` by comparing their keys and values using strict equality.
+ * ```ts
+ * function Map.isShallowEqual(map, source)
+ * ```
  *
  * ## Example
  *

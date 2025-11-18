@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { filter } from "./filter"
 
 /**
- * `Map.compact(map)`
- *
- * Removes all nullable values from `map`.
+ * ```ts
+ * function Map.compact(map)
+ * ```
  *
  * ## Example
  *

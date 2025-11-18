@@ -1,15 +1,15 @@
 # filter
 
-`filter(map, predicate)`
-
-Filters `map` by keeping only the entries where `predicate` returns true for the value.
+```ts
+function Map.filter(map, predicate)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.filter(
     new Map([
@@ -22,7 +22,7 @@ Map.filter(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

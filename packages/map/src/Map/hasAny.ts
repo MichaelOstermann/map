@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.hasAny(map, keys)`
- *
- * Checks if `map` contains any of the specified `keys`. This function supports iterables.
+ * ```ts
+ * function Map.hasAny(map, keys)
+ * ```
  *
  * ## Example
  *

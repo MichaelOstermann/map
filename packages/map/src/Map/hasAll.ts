@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.hasAll(map, keys)`
- *
- * Checks if `map` contains all of the specified `keys`. This function supports iterables.
+ * ```ts
+ * function Map.hasAll(map, keys)
+ * ```
  *
  * ## Example
  *

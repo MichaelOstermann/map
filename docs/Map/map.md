@@ -1,15 +1,15 @@
 # map
 
-`map(map, key, transform)`
-
-Transforms the value at `key` in `map` using `transform`, returning a new map if the value changes.
+```ts
+function Map.map(map, key, transform)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.map(
     new Map([
@@ -31,7 +31,7 @@ Map.map(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

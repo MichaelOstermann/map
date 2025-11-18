@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.isMap(target)`
- *
- * Checks if `target` is a Map instance.
+ * ```ts
+ * function Map.isMap(target)
+ * ```
  *
  * ## Example
  *

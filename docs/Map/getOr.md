@@ -1,15 +1,15 @@
 # getOr
 
-`getOr(map, key, or)`
-
-Gets the value associated with `key` from `map`, returning `or` if the key doesn't exist or the value is nullable.
+```ts
+function Map.getOr(map, key, or)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.getOr(
     new Map([
@@ -40,7 +40,7 @@ Map.getOr(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

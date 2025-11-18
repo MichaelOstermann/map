@@ -1,15 +1,15 @@
 # has
 
-`has(map, key)`
-
-Checks if `map` contains the specified `key`.
+```ts
+function Map.has(map, key)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.has(
     new Map([
@@ -29,7 +29,7 @@ Map.has(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

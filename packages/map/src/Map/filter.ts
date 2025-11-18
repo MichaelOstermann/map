@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.filter(map, predicate)`
- *
- * Filters `map` by keeping only the entries where `predicate` returns true for the value.
+ * ```ts
+ * function Map.filter(map, predicate)
+ * ```
  *
  * ## Example
  *

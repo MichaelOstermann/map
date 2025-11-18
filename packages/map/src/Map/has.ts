@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.has(map, key)`
- *
- * Checks if `map` contains the specified `key`.
+ * ```ts
+ * function Map.has(map, key)
+ * ```
  *
  * ## Example
  *

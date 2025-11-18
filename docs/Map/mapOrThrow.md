@@ -1,15 +1,15 @@
 # mapOrThrow
 
-`mapOrThrow(map, key, transform)`
-
-Transforms the value at `key` in `map` using `transform`, throwing an error if the key doesn't exist.
+```ts
+function Map.mapOrThrow(map, key, transform)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.mapOrThrow(
     new Map([
@@ -31,7 +31,7 @@ Map.mapOrThrow(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

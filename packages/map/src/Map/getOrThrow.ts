@@ -2,9 +2,9 @@ import type { NonNil } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.getOrThrow(map, key)`
- *
- * Gets the value associated with `key` from `map`, throwing an error if the key doesn't exist or the value is nullable.
+ * ```ts
+ * function Map.getOrThrow(map, key)
+ * ```
  *
  * ## Example
  *

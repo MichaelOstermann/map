@@ -1,15 +1,15 @@
 # hasAll
 
-`hasAll(map, keys)`
-
-Checks if `map` contains all of the specified `keys`. This function supports iterables.
+```ts
+function Map.hasAll(map, keys)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.hasAll(
     new Map([
@@ -31,7 +31,7 @@ Map.hasAll(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

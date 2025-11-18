@@ -2,9 +2,9 @@ import type { MapMap } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.forEach(map, fn)`
- *
- * Executes `fn` for each entry in `map` and returns the original map.
+ * ```ts
+ * function Map.forEach(map, fn)
+ * ```
  *
  * ## Example
  *

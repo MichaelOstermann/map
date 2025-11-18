@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.get(map, key)`
- *
- * Gets the value associated with `key` from `map`, returning `undefined` if the key doesn't exist.
+ * ```ts
+ * function Map.get(map, key)
+ * ```
  *
  * ## Example
  *

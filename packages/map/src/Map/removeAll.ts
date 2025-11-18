@@ -2,9 +2,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.removeAll(map, keys)`
- *
- * Removes all entries with the specified `keys` from `map`, returning a new map. This function supports iterables.
+ * ```ts
+ * function Map.removeAll(map, keys)
+ * ```
  *
  * ## Example
  *

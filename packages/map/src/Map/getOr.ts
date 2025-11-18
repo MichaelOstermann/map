@@ -2,9 +2,9 @@ import type { NonNil } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.getOr(map, key, or)`
- *
- * Gets the value associated with `key` from `map`, returning `or` if the key doesn't exist or the value is nullable.
+ * ```ts
+ * function Map.getOr(map, key, or)
+ * ```
  *
  * ## Example
  *

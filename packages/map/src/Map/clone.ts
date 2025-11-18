@@ -2,9 +2,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.clone(target)`
- *
- * Creates a shallow copy of a `Map`, unless marked as mutable with `markAsMutable` inside a mutation context (see [@monstermann/remmi](https://michaelostermann.github.io/remmi/#clonearray-array)).
+ * ```ts
+ * function Map.clone(target)
+ * ```
  *
  * ## Example
  *

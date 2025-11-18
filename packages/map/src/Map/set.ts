@@ -2,9 +2,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.set(map, key, value)`
- *
- * Sets the `value` for the specified `key` in `map`, returning a new map if the value changes.
+ * ```ts
+ * function Map.set(map, key, value)
+ * ```
  *
  * ## Example
  *

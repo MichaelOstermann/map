@@ -1,15 +1,15 @@
 # isShallowEqual
 
-`isShallowEqual(map, source)`
-
-Checks if `map` is shallow equal to `source` by comparing their keys and values using strict equality.
+```ts
+function Map.isShallowEqual(map, source)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.isShallowEqual(
     new Map([
@@ -35,7 +35,7 @@ Map.isShallowEqual(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

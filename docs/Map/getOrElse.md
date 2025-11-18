@@ -1,15 +1,15 @@
 # getOrElse
 
-`getOrElse(map, key, orElse)`
-
-Gets the value associated with `key` from `map`, calling `orElse` with the map if the key doesn't exist or the value is nullable.
+```ts
+function Map.getOrElse(map, key, orElse)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.getOrElse(
     new Map([
@@ -40,7 +40,7 @@ Map.getOrElse(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

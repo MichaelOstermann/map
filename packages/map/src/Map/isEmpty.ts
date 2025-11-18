@@ -1,9 +1,9 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.isEmpty(map)`
- *
- * Checks if `map` is empty (has no entries).
+ * ```ts
+ * function Map.isEmpty(map)
+ * ```
  *
  * ## Example
  *

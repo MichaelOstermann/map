@@ -2,9 +2,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.removeOrThrow(map, key)`
- *
- * Removes the entry with the specified `key` from `map`, throwing an error if the key doesn't exist.
+ * ```ts
+ * function Map.removeOrThrow(map, key)
+ * ```
  *
  * ## Example
  *

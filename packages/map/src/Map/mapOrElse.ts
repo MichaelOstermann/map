@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.mapOrElse(map, key, transform, orElse)`
- *
- * Transforms the value at `key` in `map` using `transform`, calling `orElse` with the map if the key doesn't exist.
+ * ```ts
+ * function Map.mapOrElse(map, key, transform, orElse)
+ * ```
  *
  * ## Example
  *

@@ -1,15 +1,15 @@
 # mapOr
 
-`mapOr(map, key, transform, or)`
-
-Transforms the value at `key` in `map` using `transform`, returning `or` if the key doesn't exist.
+```ts
+function Map.mapOr(map, key, transform, or)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.mapOr(
     new Map([
@@ -33,7 +33,7 @@ Map.mapOr(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

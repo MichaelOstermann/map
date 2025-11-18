@@ -1,15 +1,15 @@
 # removeOr
 
-`removeOr(map, key, or)`
-
-Removes the entry with the specified `key` from `map`, returning `or` if the key doesn't exist.
+```ts
+function Map.removeOr(map, key, or)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.removeOr(
     new Map([
@@ -31,7 +31,7 @@ Map.removeOr(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([

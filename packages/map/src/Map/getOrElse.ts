@@ -2,9 +2,9 @@ import type { NonNil, OrElse } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
- * `Map.getOrElse(map, key, orElse)`
- *
- * Gets the value associated with `key` from `map`, calling `orElse` with the map if the key doesn't exist or the value is nullable.
+ * ```ts
+ * function Map.getOrElse(map, key, orElse)
+ * ```
  *
  * ## Example
  *

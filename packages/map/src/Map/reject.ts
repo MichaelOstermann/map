@@ -3,9 +3,9 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
- * `Map.reject(map, by)`
- *
- * Rejects entries from `map` where `by` returns true for the value.
+ * ```ts
+ * function Map.reject(map, by)
+ * ```
  *
  * ## Example
  *

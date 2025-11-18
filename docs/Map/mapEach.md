@@ -1,15 +1,15 @@
 # mapEach
 
-`mapEach(map, fn)`
-
-Maps each value in `map` using `fn`, returning a new map with the transformed values.
+```ts
+function Map.mapEach(map, fn)
+```
 
 ## Example
 
 ::: code-group
 
 ```ts [data-first]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 Map.mapEach(
     new Map([
@@ -21,7 +21,7 @@ Map.mapEach(
 ```
 
 ```ts [data-last]
-import { Map } from "@monstermann/map"
+import { Map } from "@monstermann/map";
 
 pipe(
     new Map([
