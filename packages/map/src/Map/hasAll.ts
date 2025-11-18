@@ -8,6 +8,8 @@ import { dfdlT } from "@monstermann/dfdl"
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * Map.hasAll(
  *     Map.create([
  *         ["a", 1],
@@ -28,6 +30,8 @@ import { dfdlT } from "@monstermann/dfdl"
  * ```
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * pipe(
  *     Map.create([
  *         ["a", 1],

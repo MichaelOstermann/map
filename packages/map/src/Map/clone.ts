@@ -9,6 +9,8 @@ import { cloneMap } from "@monstermann/remmi"
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * const original = Map.create([
  *     ["a", 1],
  *     ["b", 2],
@@ -18,6 +20,8 @@ import { cloneMap } from "@monstermann/remmi"
  * ```
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * const original = Map.create([
  *     ["a", 1],
  *     ["b", 2],

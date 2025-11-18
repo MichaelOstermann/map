@@ -9,6 +9,8 @@ import { cloneMap } from "@monstermann/remmi"
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * Map.removeOrThrow(
  *     Map.create([
  *         ["a", 1],
@@ -27,6 +29,8 @@ import { cloneMap } from "@monstermann/remmi"
  * ```
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * pipe(
  *     Map.create([
  *         ["a", 1],

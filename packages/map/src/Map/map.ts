@@ -10,6 +10,8 @@ import { cloneMap } from "@monstermann/remmi"
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * Map.map(
  *     Map.create([
  *         ["a", 1],
@@ -30,6 +32,8 @@ import { cloneMap } from "@monstermann/remmi"
  * ```
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * pipe(
  *     Map.create([
  *         ["a", 1],
@@ -44,6 +48,7 @@ import { cloneMap } from "@monstermann/remmi"
  *         ["b", 2],
  *     ]),
  *     Map.map("c", (value) => value * 2),
+ * ```
  */
 export const map: {
     <K, V>(key: NoInfer<K>, transform: MapMap<K, V>): (target: Map<K, V>) => Map<K, V>

@@ -6,6 +6,8 @@
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * Map.create([
  *     ["a", 1],
  *     ["b", 2],

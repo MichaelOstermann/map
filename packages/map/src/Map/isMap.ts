@@ -8,12 +8,16 @@ import { dfdlT } from "@monstermann/dfdl"
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * Map.isMap(Map.create()); // true
  * Map.isMap({}); // false
  * Map.isMap([]); // false
  * ```
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * pipe(Map.create(), Map.isMap()); // true
  * pipe({}, Map.isMap()); // false
  * pipe([], Map.isMap()); // false

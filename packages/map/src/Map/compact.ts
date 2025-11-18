@@ -10,6 +10,8 @@ import { filter } from "./filter"
  * ## Example
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * Map.compact(
  *     Map.create([
  *         ["a", 1],
@@ -20,6 +22,8 @@ import { filter } from "./filter"
  * ```
  *
  * ```ts
+ * import { Map } from "@monstermann/map";
+ *
  * pipe(
  *     Map.create([
  *         ["a", 1],
