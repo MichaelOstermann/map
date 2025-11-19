@@ -2,7 +2,7 @@ import { dfdlT } from "@monstermann/dfdl"
 
 /**
  * ```ts
- * function Map.isMap(target)
+ * function Map.is(target)
  * ```
  *
  * ## Example
@@ -10,20 +10,20 @@ import { dfdlT } from "@monstermann/dfdl"
  * ```ts
  * import { Map } from "@monstermann/map";
  *
- * Map.isMap(Map.create()); // true
- * Map.isMap({}); // false
- * Map.isMap([]); // false
+ * Map.is(Map.create()); // true
+ * Map.is({}); // false
+ * Map.is([]); // false
  * ```
  *
  * ```ts
  * import { Map } from "@monstermann/map";
  *
- * pipe(Map.create(), Map.isMap()); // true
- * pipe({}, Map.isMap()); // false
- * pipe([], Map.isMap()); // false
+ * pipe(Map.create(), Map.is()); // true
+ * pipe({}, Map.is()); // false
+ * pipe([], Map.is()); // false
  * ```
  */
-export const isMap: {
+export const is: {
     (): (target: unknown) => target is Map<unknown, unknown>
     (target: unknown): target is Map<unknown, unknown>
 } = dfdlT((target: unknown): target is Map<unknown, unknown> => {

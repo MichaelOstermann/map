@@ -6,6 +6,7 @@
 
 import { clone } from "./clone.js";
 import { compact } from "./compact.js";
+import { create } from "./create.js";
 import { filter } from "./filter.js";
 import { forEach } from "./forEach.js";
 import { get } from "./get.js";
@@ -16,8 +17,8 @@ import { has } from "./has.js";
 import { hasAll } from "./hasAll.js";
 import { hasAny } from "./hasAny.js";
 import { hasNone } from "./hasNone.js";
+import { is } from "./is.js";
 import { isEmpty } from "./isEmpty.js";
-import { isMap } from "./isMap.js";
 import { isShallowEqual } from "./isShallowEqual.js";
 import { map } from "./map.js";
 import { mapEach } from "./mapEach.js";
@@ -36,6 +37,7 @@ declare namespace Map {
     export {
         clone,
         compact,
+        create,
         filter,
         forEach,
         get,
@@ -46,8 +48,8 @@ declare namespace Map {
         hasAll,
         hasAny,
         hasNone,
+        is,
         isEmpty,
-        isMap,
         isShallowEqual,
         map,
         mapEach,
