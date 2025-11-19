@@ -12,7 +12,7 @@ export default createUnplugin<Options>(({ debug, enforce, exclude, include } = {
 
     return {
         enforce,
-        name: "unplugin-result",
+        name: "unplugin-map",
         transform: {
             filter: {
                 id: {
