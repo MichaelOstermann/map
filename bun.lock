@@ -20,7 +20,7 @@
     },
     "packages/map": {
       "name": "@monstermann/map",
-      "version": "0.0.0",
+      "version": "0.1.0",
       "dependencies": {
         "@monstermann/dfdl": "^0.1.0",
         "@monstermann/remmi": "^0.0.0",

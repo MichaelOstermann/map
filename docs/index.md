@@ -22,7 +22,6 @@ aside: true
 - Reference preservation (`filter(map, () => true) === map`)
 - Pipe-friendly (`pipe(filter(() => true))(map)`)
 - Graceful failure handling (`get()`, `getOr()`, `getOrElse()`, `getOrThrow()`)
-- [Tree-shaking](#tree-shaking)
 
 ## Installation
 
