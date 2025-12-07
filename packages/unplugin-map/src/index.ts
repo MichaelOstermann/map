@@ -25,7 +25,7 @@ export default createUnplugin<Options>(({ debug, enforce, exclude, include } = {
                     debug: shouldDebug(id),
                     resolve({ importAlias, importName, importPath, propertyName }) {
                         if (importPath === "@monstermann/map" && importName === "Map")
-                            return `import { ${propertyName} as ${importAlias} } from "@monstermann/map/Map/${propertyName}.js"`
+                            return `import { ${propertyName} as ${importAlias} } from "@monstermann/map/Map/${propertyName}.mjs"`
                         return undefined
                     },
                 })
