@@ -1,27 +1,34 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # is
+ *
  * ```ts
- * function Map.is(target)
+ * function Map.is(
+ *     target: unknown,
+ * ): target is Map<unknown, unknown>
  * ```
+ *
+ * Type guard that checks whether a value is a Map instance.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
- * Map.is(Map.create()); // true
+ * Map.is(new Map()); // true
  * Map.is({}); // false
  * Map.is([]); // false
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
- * pipe(Map.create(), Map.is()); // true
+ * pipe(new Map(), Map.is()); // true
  * pipe({}, Map.is()); // false
  * pipe([], Map.is()); // false
  * ```
+ *
  */
 export const is: {
     (): (target: unknown) => target is Map<unknown, unknown>

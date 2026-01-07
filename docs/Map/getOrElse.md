@@ -1,8 +1,14 @@
 # getOrElse
 
 ```ts
-function Map.getOrElse(map, key, orElse)
+function Map.getOrElse<K, V, U>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    orElse: (target: ReadonlyMap<K, V>) => U,
+): Exclude<V, null | undefined> | U
 ```
+
+Gets the value associated with the specified key, or calls the provided function to compute a fallback value if the value is `null` or `undefined`.
 
 ## Example
 

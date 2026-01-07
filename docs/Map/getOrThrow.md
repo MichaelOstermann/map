@@ -1,8 +1,13 @@
 # getOrThrow
 
 ```ts
-function Map.getOrThrow(map, key)
+function Map.getOrThrow<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+): Exclude<V, null | undefined>
 ```
+
+Gets the value associated with the specified key, or throws an error if the value is `null` or `undefined`.
 
 ## Example
 

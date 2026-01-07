@@ -1,8 +1,13 @@
 # remove
 
 ```ts
-function Map.remove(map, key)
+function Map.remove<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+): ReadonlyMap<K, V>
 ```
+
+Removes the specified key from the map. Returns the original map if the key doesn't exist.
 
 ## Example
 

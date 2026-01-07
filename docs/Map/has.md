@@ -1,8 +1,13 @@
 # has
 
 ```ts
-function Map.has(map, key)
+function Map.has<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+): boolean
 ```
+
+Checks whether the map contains the specified key.
 
 ## Example
 

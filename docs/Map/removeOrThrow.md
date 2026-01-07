@@ -1,8 +1,13 @@
 # removeOrThrow
 
 ```ts
-function Map.removeOrThrow(map, key)
+function Map.removeOrThrow<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+): Map<K, V>
 ```
+
+Removes the specified key from the map, or throws an error if the key doesn't exist.
 
 ## Example
 

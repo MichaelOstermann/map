@@ -1,8 +1,17 @@
 # forEach
 
 ```ts
-function Map.forEach(map, fn)
+function Map.forEach<K, V>(
+    target: ReadonlyMap<K, V>,
+    fn: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => any,
+): ReadonlyMap<K, V>
 ```
+
+Executes a function for each entry in the map and returns the original map.
 
 ## Example
 

@@ -1,19 +1,29 @@
-import type { MapGuard, MapPredicate } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # reject
+ *
  * ```ts
- * function Map.reject(map, by)
+ * function Map.reject<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     by: (
+ *         value: NoInfer<V>,
+ *         key: NoInfer<K>,
+ *         target: ReadonlyMap<K, V>,
+ *     ) => boolean,
+ * ): ReadonlyMap<K, V>
  * ```
+ *
+ * Returns a new map excluding entries that satisfy the predicate function.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.reject(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -22,11 +32,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "a" => 1 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -34,19 +44,20 @@ import { cloneMap } from "@monstermann/remmi"
  *     Map.reject((value) => value > 1),
  * ); // Map(1) { "a" => 1 }
  * ```
+ *
  */
 export const reject: {
-    <K, V, U extends V>(by: MapGuard<K, V, U>): (target: Map<K, V>) => Map<K, Exclude<V, U>>
-    <K, V, U extends V>(by: MapGuard<K, V, U>): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, Exclude<V, U>>
+    <K, V, U extends V>(by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => value is U): (target: Map<K, V>) => Map<K, Exclude<V, U>>
+    <K, V, U extends V>(by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => value is U): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, Exclude<V, U>>
 
-    <K, V>(by: MapPredicate<K, V>): (target: Map<K, V>) => Map<K, V>
-    <K, V>(by: MapPredicate<K, V>): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, V>
+    <K, V>(by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => boolean): (target: Map<K, V>) => Map<K, V>
+    <K, V>(by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => boolean): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, V>
 
-    <K, V, U extends V>(target: Map<K, V>, by: MapGuard<K, V, U>): Map<K, Exclude<V, U>>
-    <K, V, U extends V>(target: ReadonlyMap<K, V>, by: MapGuard<K, V, U>): ReadonlyMap<K, Exclude<V, U>>
+    <K, V, U extends V>(target: Map<K, V>, by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => value is U): Map<K, Exclude<V, U>>
+    <K, V, U extends V>(target: ReadonlyMap<K, V>, by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => value is U): ReadonlyMap<K, Exclude<V, U>>
 
-    <K, V>(target: Map<K, V>, by: MapPredicate<K, V>): Map<K, V>
-    <K, V>(target: ReadonlyMap<K, V>, by: MapPredicate<K, V>): ReadonlyMap<K, V>
+    <K, V>(target: Map<K, V>, by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => boolean): Map<K, V>
+    <K, V>(target: ReadonlyMap<K, V>, by: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => boolean): ReadonlyMap<K, V>
 } = dfdlT((target: any, by: any): any => {
     let result
     for (const [key, value] of target) {

@@ -2,17 +2,25 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # removeOr
+ *
  * ```ts
- * function Map.removeOr(map, key, or)
+ * function Map.removeOr<K, V, U>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ *     or: U,
+ * ): Map<K, V> | U
  * ```
+ *
+ * Removes the specified key from the map, or returns the fallback value if the key doesn't exist.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.removeOr(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -21,7 +29,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * Map.removeOr(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -30,11 +38,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // null
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -42,13 +50,14 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.removeOr("c", null),
  * ); // null
  * ```
+ *
  */
 export const removeOr: {
     <K, V, U>(key: NoInfer<K>, or: U): (target: ReadonlyMap<K, V>) => Map<K, V> | U

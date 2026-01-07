@@ -1,19 +1,26 @@
-import type { OrElse } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # removeOrElse
+ *
  * ```ts
- * function Map.removeOrElse(map, key, orElse)
+ * function Map.removeOrElse<K, V, U>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ *     orElse: (target: ReadonlyMap<K, V>) => U,
+ * ): Map<K, V> | U
  * ```
+ *
+ * Removes the specified key from the map, or calls the fallback function if the key doesn't exist.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.removeOrElse(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -22,7 +29,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * Map.removeOrElse(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -31,11 +38,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // 2
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -43,18 +50,19 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.removeOrElse("c", (map) => map.size),
  * ); // 2
  * ```
+ *
  */
 export const removeOrElse: {
-    <K, V, U>(key: NoInfer<K>, orElse: OrElse<K, V, U>): (target: ReadonlyMap<K, V>) => Map<K, V> | U
-    <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: OrElse<K, V, U>): Map<K, V> | U
-} = dfdlT(<K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: OrElse<K, V, U>): Map<K, V> | U => {
+    <K, V, U>(key: NoInfer<K>, orElse: (target: ReadonlyMap<K, V>) => U): (target: ReadonlyMap<K, V>) => Map<K, V> | U
+    <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: (target: ReadonlyMap<K, V>) => U): Map<K, V> | U
+} = dfdlT(<K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, orElse: (target: ReadonlyMap<K, V>) => U): Map<K, V> | U => {
     if (!target.has(key)) return orElse(target)
     const result = cloneMap(target)
     result.delete(key)

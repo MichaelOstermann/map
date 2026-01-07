@@ -1,8 +1,14 @@
 # removeOrElse
 
 ```ts
-function Map.removeOrElse(map, key, orElse)
+function Map.removeOrElse<K, V, U>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    orElse: (target: ReadonlyMap<K, V>) => U,
+): Map<K, V> | U
 ```
+
+Removes the specified key from the map, or calls the fallback function if the key doesn't exist.
 
 ## Example
 

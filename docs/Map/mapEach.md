@@ -1,8 +1,17 @@
 # mapEach
 
 ```ts
-function Map.mapEach(map, fn)
+function Map.mapEach<K, V, U>(
+    target: ReadonlyMap<K, V>,
+    fn: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => U,
+): ReadonlyMap<K, U>
 ```
+
+Transforms all values in the map using the provided function.
 
 ## Example
 

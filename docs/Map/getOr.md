@@ -1,8 +1,14 @@
 # getOr
 
 ```ts
-function Map.getOr(map, key, or)
+function Map.getOr<K, V, U>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    or: U,
+): Exclude<V, null | undefined> | U
 ```
+
+Gets the value associated with the specified key, or returns the fallback value if the value is `null` or `undefined`.
 
 ## Example
 

@@ -2,17 +2,24 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # removeOrThrow
+ *
  * ```ts
- * function Map.removeOrThrow(map, key)
+ * function Map.removeOrThrow<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ * ): Map<K, V>
  * ```
+ *
+ * Removes the specified key from the map, or throws an error if the key doesn't exist.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.removeOrThrow(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -20,7 +27,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * Map.removeOrThrow(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -28,11 +35,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // throws FnError
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -40,13 +47,14 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.removeOrThrow("c"),
  * ); // throws FnError
  * ```
+ *
  */
 export const removeOrThrow: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => Map<K, V>

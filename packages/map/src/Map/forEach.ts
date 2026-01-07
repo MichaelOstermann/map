@@ -1,18 +1,28 @@
-import type { MapMap } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # forEach
+ *
  * ```ts
- * function Map.forEach(map, fn)
+ * function Map.forEach<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     fn: (
+ *         value: NoInfer<V>,
+ *         key: NoInfer<K>,
+ *         target: ReadonlyMap<K, V>,
+ *     ) => any,
+ * ): ReadonlyMap<K, V>
  * ```
+ *
+ * Executes a function for each entry in the map and returns the original map.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.forEach(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -20,25 +30,26 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // Map(2) { "a" => 1, "b" => 2 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.forEach((value, key) => console.log(key, value)),
  * ); // Map(2) { "a" => 1, "b" => 2 }
  * ```
+ *
  */
 export const forEach: {
-    <K, V>(fn: MapMap<K, V, any>): (target: Map<K, V>) => Map<K, V>
-    <K, V>(fn: MapMap<K, V, any>): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, V>
+    <K, V>(fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => any): (target: Map<K, V>) => Map<K, V>
+    <K, V>(fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => any): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, V>
 
-    <K, V>(target: Map<K, V>, fn: MapMap<K, V, any>): Map<K, V>
-    <K, V>(target: ReadonlyMap<K, V>, fn: MapMap<K, V, any>): ReadonlyMap<K, V>
-} = dfdlT(<K, V>(target: Map<K, V>, fn: MapMap<K, V, any>): Map<K, V> => {
+    <K, V>(target: Map<K, V>, fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => any): Map<K, V>
+    <K, V>(target: ReadonlyMap<K, V>, fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => any): ReadonlyMap<K, V>
+} = dfdlT(<K, V>(target: Map<K, V>, fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => any): Map<K, V> => {
     target.forEach(fn)
     return target
 }, 2)

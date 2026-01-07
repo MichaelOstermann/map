@@ -1,17 +1,24 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # has
+ *
  * ```ts
- * function Map.has(map, key)
+ * function Map.has<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ * ): boolean
  * ```
+ *
+ * Checks whether the map contains the specified key.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.has(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -19,7 +26,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * Map.has(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -27,11 +34,11 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // false
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -39,13 +46,14 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.has("c"),
  * ); // false
  * ```
+ *
  */
 export const has: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => boolean

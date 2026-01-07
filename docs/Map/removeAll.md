@@ -1,8 +1,13 @@
 # removeAll
 
 ```ts
-function Map.removeAll(map, keys)
+function Map.removeAll<K, V>(
+    target: ReadonlyMap<K, V>,
+    keys: Iterable<NoInfer<K>>,
+): ReadonlyMap<K, V>
 ```
+
+Removes all specified keys from the map.
 
 ## Example
 

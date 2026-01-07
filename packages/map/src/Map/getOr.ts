@@ -1,18 +1,25 @@
-import type { NonNil } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # getOr
+ *
  * ```ts
- * function Map.getOr(map, key, or)
+ * function Map.getOr<K, V, U>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ *     or: U,
+ * ): Exclude<V, null | undefined> | U
  * ```
+ *
+ * Gets the value associated with the specified key, or returns the fallback value if the value is `null` or `undefined`.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.getOr(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *     ]),
@@ -21,7 +28,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 1
  *
  * Map.getOr(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *     ]),
@@ -30,7 +37,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 0
  *
  * Map.getOr(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *     ]),
@@ -39,11 +46,11 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 0
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *     ]),
@@ -51,7 +58,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 1
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *     ]),
@@ -59,17 +66,18 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 0
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *     ]),
  *     Map.getOr("c", 0),
  * ); // 0
  * ```
+ *
  */
 export const getOr: {
-    <K, V, U>(key: NoInfer<K>, or: U): (target: ReadonlyMap<K, V>) => NonNil<V> | U
-    <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): NonNil<V> | U
+    <K, V, U>(key: NoInfer<K>, or: U): (target: ReadonlyMap<K, V>) => Exclude<V, null | undefined> | U
+    <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): Exclude<V, null | undefined> | U
 } = dfdlT(<K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, or: U): any => {
     return target.get(key) ?? or
 }, 3)

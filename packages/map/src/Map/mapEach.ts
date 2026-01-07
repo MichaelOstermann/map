@@ -1,19 +1,29 @@
-import type { MapMap } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # mapEach
+ *
  * ```ts
- * function Map.mapEach(map, fn)
+ * function Map.mapEach<K, V, U>(
+ *     target: ReadonlyMap<K, V>,
+ *     fn: (
+ *         value: NoInfer<V>,
+ *         key: NoInfer<K>,
+ *         target: ReadonlyMap<K, V>,
+ *     ) => U,
+ * ): ReadonlyMap<K, U>
  * ```
+ *
+ * Transforms all values in the map using the provided function.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.mapEach(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -21,24 +31,25 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(2) { "a" => 2, "b" => 4 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.mapEach((value, key) => value * 2),
  * ); // Map(2) { "a" => 2, "b" => 4 }
  * ```
+ *
  */
 export const mapEach: {
-    <K, V, U>(fn: MapMap<K, V, U>): (target: Map<K, V>) => Map<K, U>
-    <K, V, U>(fn: MapMap<K, V, U>): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, U>
+    <K, V, U>(fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => U): (target: Map<K, V>) => Map<K, U>
+    <K, V, U>(fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => U): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, U>
 
-    <K, V, U>(target: Map<K, V>, fn: MapMap<K, V, U>): Map<K, U>
-    <K, V, U>(target: ReadonlyMap<K, V>, fn: MapMap<K, V, U>): ReadonlyMap<K, U>
+    <K, V, U>(target: Map<K, V>, fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => U): Map<K, U>
+    <K, V, U>(target: ReadonlyMap<K, V>, fn: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => U): ReadonlyMap<K, U>
 } = dfdlT((target: any, fn: any): any => {
     let result
     for (const [k, prev] of target) {

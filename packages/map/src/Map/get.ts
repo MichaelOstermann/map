@@ -1,17 +1,24 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # get
+ *
  * ```ts
- * function Map.get(map, key)
+ * function Map.get<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ * ): V | undefined
  * ```
+ *
+ * Gets the value associated with the specified key, or `undefined` if the key doesn't exist.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.get(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -19,7 +26,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 1
  *
  * Map.get(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -27,11 +34,11 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // undefined
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -39,13 +46,14 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // 1
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.get("c"),
  * ); // undefined
  * ```
+ *
  */
 export const get: {
     <K, V>(key: NoInfer<K>): (target: ReadonlyMap<K, V>) => V | undefined

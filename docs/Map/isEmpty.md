@@ -1,8 +1,10 @@
 # isEmpty
 
 ```ts
-function Map.isEmpty(map)
+function Map.isEmpty<T, U>(target: ReadonlyMap<T, U>): boolean
 ```
+
+Checks whether the map is empty (contains no entries).
 
 ## Example
 

@@ -1,8 +1,13 @@
 # hasAny
 
 ```ts
-function Map.hasAny(map, keys)
+function Map.hasAny<K, V>(
+    target: ReadonlyMap<K, V>,
+    keys: Iterable<NoInfer<K>>,
+): boolean
 ```
+
+Checks whether the map contains any of the specified keys.
 
 ## Example
 

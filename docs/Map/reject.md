@@ -1,8 +1,17 @@
 # reject
 
 ```ts
-function Map.reject(map, by)
+function Map.reject<K, V>(
+    target: ReadonlyMap<K, V>,
+    by: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+): ReadonlyMap<K, V>
 ```
+
+Returns a new map excluding entries that satisfy the predicate function.
 
 ## Example
 

@@ -1,8 +1,19 @@
 # mapOrElse
 
 ```ts
-function Map.mapOrElse(map, key, transform, orElse)
+function Map.mapOrElse<K, V, U>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    transform: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+    orElse: (target: ReadonlyMap<K, V>) => U,
+): ReadonlyMap<K, V> | U
 ```
+
+Transforms the value at the specified key using the provided function, or calls the fallback function if the key doesn't exist.
 
 ## Example
 

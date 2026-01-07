@@ -1,8 +1,18 @@
 # map
 
 ```ts
-function Map.map(map, key, transform)
+function Map.map<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    transform: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+): ReadonlyMap<K, V>
 ```
+
+Transforms the value at the specified key using the provided function. Returns the original map if the key doesn't exist.
 
 ## Example
 

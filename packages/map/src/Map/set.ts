@@ -2,17 +2,25 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # set
+ *
  * ```ts
- * function Map.set(map, key, value)
+ * function Map.set<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ *     value: NoInfer<V>,
+ * ): ReadonlyMap<K, V>
  * ```
+ *
+ * Sets or updates the value for the specified key in the map.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.set(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -21,7 +29,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(2) { "a" => 10, "b" => 2 }
  *
  * Map.set(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -30,11 +38,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(3) { "a" => 1, "b" => 2, "c" => 3 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -42,13 +50,14 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(2) { "a" => 10, "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.set("c", 3),
  * ); // Map(3) { "a" => 1, "b" => 2, "c" => 3 }
  * ```
+ *
  */
 export const set: {
     <K, V>(key: NoInfer<K>, value: NoInfer<V>): (target: Map<K, V>) => Map<K, V>

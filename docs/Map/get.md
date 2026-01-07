@@ -1,8 +1,13 @@
 # get
 
 ```ts
-function Map.get(map, key)
+function Map.get<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+): V | undefined
 ```
+
+Gets the value associated with the specified key, or `undefined` if the key doesn't exist.
 
 ## Example
 

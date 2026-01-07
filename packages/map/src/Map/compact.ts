@@ -1,19 +1,24 @@
-import type { NonNil } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 import { filter } from "./filter"
 
 /**
+ * # compact
+ *
  * ```ts
- * function Map.compact(map)
+ * function Map.compact<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ * ): ReadonlyMap<K, Exclude<V, null | undefined>>
  * ```
+ *
+ * Removes all entries with `null` or `undefined` values.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.compact(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *         ["c", undefined],
@@ -21,11 +26,11 @@ import { filter } from "./filter"
  * ); // Map(1) { "a" => 1 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", null],
  *         ["c", undefined],
@@ -33,13 +38,14 @@ import { filter } from "./filter"
  *     Map.compact(),
  * ); // Map(1) { "a" => 1 }
  * ```
+ *
  */
 export const compact: {
-    (): <K, V>(target: Map<K, V>) => Map<K, NonNil<V>>
-    (): <K, V>(target: ReadonlyMap<K, V>) => ReadonlyMap<K, NonNil<V>>
+    (): <K, V>(target: Map<K, V>) => Map<K, Exclude<V, null | undefined>>
+    (): <K, V>(target: ReadonlyMap<K, V>) => ReadonlyMap<K, Exclude<V, null | undefined>>
 
-    <K, V>(target: Map<K, V>): Map<K, NonNil<V>>
-    <K, V>(target: ReadonlyMap<K, V>): ReadonlyMap<K, NonNil<V>>
+    <K, V>(target: Map<K, V>): Map<K, Exclude<V, null | undefined>>
+    <K, V>(target: ReadonlyMap<K, V>): ReadonlyMap<K, Exclude<V, null | undefined>>
 } = dfdlT((target: any): any => {
     return filter(target, v => v != null)
 }, 1)

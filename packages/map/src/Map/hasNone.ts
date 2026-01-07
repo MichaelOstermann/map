@@ -1,17 +1,24 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # hasNone
+ *
  * ```ts
- * function Map.hasNone(map, keys)
+ * function Map.hasNone<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     keys: Iterable<NoInfer<K>>,
+ * ): boolean
  * ```
+ *
+ * Checks whether the map contains none of the specified keys.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.hasNone(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -19,7 +26,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * Map.hasNone(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -27,11 +34,11 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // false
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -39,13 +46,14 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.hasNone(["a", "c"]),
  * ); // false
  * ```
+ *
  */
 export const hasNone: {
     <K, V>(keys: Iterable<NoInfer<K>>): (target: ReadonlyMap<K, V>) => boolean

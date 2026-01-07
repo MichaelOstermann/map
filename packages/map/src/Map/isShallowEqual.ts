@@ -1,48 +1,55 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # isShallowEqual
+ *
  * ```ts
- * function Map.isShallowEqual(map, source)
+ * function Map.isShallowEqual<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     source: ReadonlyMap<NoInfer<K>, NoInfer<V>>,
+ * ): boolean
  * ```
+ *
+ * Checks whether two maps are shallowly equal (same keys and values using strict equality).
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.isShallowEqual(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  * ); // true
  *
  * Map.isShallowEqual(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 3],
  *     ]),
  * ); // false
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.isShallowEqual(
- *         Map.create([
+ *         new Map([
  *             ["a", 1],
  *             ["b", 2],
  *         ]),
@@ -50,18 +57,19 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.isShallowEqual(
- *         Map.create([
+ *         new Map([
  *             ["a", 1],
  *             ["b", 3],
  *         ]),
  *     ),
  * ); // false
  * ```
+ *
  */
 export const isShallowEqual: {
     <K, V>(source: ReadonlyMap<NoInfer<K>, NoInfer<V>>): (target: ReadonlyMap<K, V>) => boolean

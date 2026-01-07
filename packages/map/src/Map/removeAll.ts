@@ -2,17 +2,24 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # removeAll
+ *
  * ```ts
- * function Map.removeAll(map, keys)
+ * function Map.removeAll<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     keys: Iterable<NoInfer<K>>,
+ * ): ReadonlyMap<K, V>
  * ```
+ *
+ * Removes all specified keys from the map.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.removeAll(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -21,7 +28,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * Map.removeAll(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -30,11 +37,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(3) { "a" => 1, "b" => 2, "c" => 3 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -43,7 +50,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -51,6 +58,7 @@ import { cloneMap } from "@monstermann/remmi"
  *     Map.removeAll(["d", "e"]),
  * ); // Map(3) { "a" => 1, "b" => 2, "c" => 3 }
  * ```
+ *
  */
 export const removeAll: {
     <K, V>(keys: Iterable<NoInfer<K>>): (target: Map<K, V>) => Map<K, V>

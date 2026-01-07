@@ -1,8 +1,14 @@
 # set
 
 ```ts
-function Map.set(map, key, value)
+function Map.set<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    value: NoInfer<V>,
+): ReadonlyMap<K, V>
 ```
+
+Sets or updates the value for the specified key in the map.
 
 ## Example
 

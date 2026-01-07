@@ -2,17 +2,24 @@ import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # remove
+ *
  * ```ts
- * function Map.remove(map, key)
+ * function Map.remove<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ * ): ReadonlyMap<K, V>
  * ```
+ *
+ * Removes the specified key from the map. Returns the original map if the key doesn't exist.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.remove(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -20,7 +27,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * Map.remove(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -28,11 +35,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(2) { "a" => 1, "b" => 2 }
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -40,13 +47,14 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(1) { "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
  *     Map.remove("c"),
  * ); // Map(2) { "a" => 1, "b" => 2 }
  * ```
+ *
  */
 export const remove: {
     <K, V>(key: NoInfer<K>): (target: Map<K, V>) => Map<K, V>

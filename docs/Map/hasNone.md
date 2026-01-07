@@ -1,8 +1,13 @@
 # hasNone
 
 ```ts
-function Map.hasNone(map, keys)
+function Map.hasNone<K, V>(
+    target: ReadonlyMap<K, V>,
+    keys: Iterable<NoInfer<K>>,
+): boolean
 ```
+
+Checks whether the map contains none of the specified keys.
 
 ## Example
 

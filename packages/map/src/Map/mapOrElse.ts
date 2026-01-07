@@ -1,19 +1,31 @@
-import type { MapMap, OrElse } from "./internals/types"
 import { dfdlT } from "@monstermann/dfdl"
 import { cloneMap } from "@monstermann/remmi"
 
 /**
+ * # mapOrElse
+ *
  * ```ts
- * function Map.mapOrElse(map, key, transform, orElse)
+ * function Map.mapOrElse<K, V, U>(
+ *     target: ReadonlyMap<K, V>,
+ *     key: NoInfer<K>,
+ *     transform: (
+ *         value: NoInfer<V>,
+ *         key: NoInfer<K>,
+ *         target: ReadonlyMap<K, V>,
+ *     ) => V,
+ *     orElse: (target: ReadonlyMap<K, V>) => U,
+ * ): ReadonlyMap<K, V> | U
  * ```
+ *
+ * Transforms the value at the specified key using the provided function, or calls the fallback function if the key doesn't exist.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.mapOrElse(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -23,7 +35,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(2) { "a" => 2, "b" => 2 }
  *
  * Map.mapOrElse(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -33,11 +45,11 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // 2
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -49,7 +61,7 @@ import { cloneMap } from "@monstermann/remmi"
  * ); // Map(2) { "a" => 2, "b" => 2 }
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *     ]),
@@ -60,14 +72,15 @@ import { cloneMap } from "@monstermann/remmi"
  *     ),
  * ); // 2
  * ```
+ *
  */
 export const mapOrElse: {
-    <K, V, U>(key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): (target: Map<K, V>) => Map<K, V> | U
-    <K, V, U>(key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, V> | U
+    <K, V, U>(key: NoInfer<K>, transform: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => V, orElse: (target: ReadonlyMap<K, V>) => U): (target: Map<K, V>) => Map<K, V> | U
+    <K, V, U>(key: NoInfer<K>, transform: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => V, orElse: (target: ReadonlyMap<K, V>) => U): (target: ReadonlyMap<K, V>) => ReadonlyMap<K, V> | U
 
-    <K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): Map<K, V> | U
-    <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): ReadonlyMap<K, V> | U
-} = dfdlT(<K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: MapMap<K, V>, orElse: OrElse<K, V, U>): Map<K, V> | U => {
+    <K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => V, orElse: (target: ReadonlyMap<K, V>) => U): Map<K, V> | U
+    <K, V, U>(target: ReadonlyMap<K, V>, key: NoInfer<K>, transform: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => V, orElse: (target: ReadonlyMap<K, V>) => U): ReadonlyMap<K, V> | U
+} = dfdlT(<K, V, U>(target: Map<K, V>, key: NoInfer<K>, transform: (value: NoInfer<V>, key: NoInfer<K>, target: ReadonlyMap<K, V>) => V, orElse: (target: ReadonlyMap<K, V>) => U): Map<K, V> | U => {
     if (!target.has(key)) return orElse(target)
     const prev = target.get(key)! as V
     const next = transform(prev, key, target)

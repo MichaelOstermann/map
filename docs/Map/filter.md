@@ -1,8 +1,17 @@
 # filter
 
 ```ts
-function Map.filter(map, predicate)
+function Map.filter<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+): ReadonlyMap<K, V>
 ```
+
+Returns a new map containing only entries that satisfy the predicate function.
 
 ## Example
 

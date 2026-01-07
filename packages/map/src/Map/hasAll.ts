@@ -1,17 +1,24 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # hasAll
+ *
  * ```ts
- * function Map.hasAll(map, keys)
+ * function Map.hasAll<K, V>(
+ *     target: ReadonlyMap<K, V>,
+ *     keys: Iterable<NoInfer<K>>,
+ * ): boolean
  * ```
+ *
+ * Checks whether the map contains all of the specified keys.
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
  * Map.hasAll(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -20,7 +27,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * Map.hasAll(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -29,11 +36,11 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // false
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -42,7 +49,7 @@ import { dfdlT } from "@monstermann/dfdl"
  * ); // true
  *
  * pipe(
- *     Map.create([
+ *     new Map([
  *         ["a", 1],
  *         ["b", 2],
  *         ["c", 3],
@@ -50,6 +57,7 @@ import { dfdlT } from "@monstermann/dfdl"
  *     Map.hasAll(["a", "d"]),
  * ); // false
  * ```
+ *
  */
 export const hasAll: {
     <K, V>(keys: Iterable<NoInfer<K>>): (target: ReadonlyMap<K, V>) => boolean

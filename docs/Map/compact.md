@@ -1,8 +1,12 @@
 # compact
 
 ```ts
-function Map.compact(map)
+function Map.compact<K, V>(
+    target: ReadonlyMap<K, V>,
+): ReadonlyMap<K, Exclude<V, null | undefined>>
 ```
+
+Removes all entries with `null` or `undefined` values.
 
 ## Example
 

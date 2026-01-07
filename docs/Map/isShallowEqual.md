@@ -1,8 +1,13 @@
 # isShallowEqual
 
 ```ts
-function Map.isShallowEqual(map, source)
+function Map.isShallowEqual<K, V>(
+    target: ReadonlyMap<K, V>,
+    source: ReadonlyMap<NoInfer<K>, NoInfer<V>>,
+): boolean
 ```
+
+Checks whether two maps are shallowly equal (same keys and values using strict equality).
 
 ## Example
 

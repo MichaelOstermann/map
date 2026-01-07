@@ -1,8 +1,10 @@
 # clone
 
 ```ts
-function Map.clone(target)
+function Map.clone<K, V>(target: ReadonlyMap<K, V>): Map<K, V>
 ```
+
+Creates a shallow copy of the map, unless marked as mutable with `markAsMutable` inside a mutation context (see [@monstermann/remmi](https://michaelostermann.github.io/remmi/#clonearray-array)).
 
 ## Example
 

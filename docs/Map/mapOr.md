@@ -1,8 +1,19 @@
 # mapOr
 
 ```ts
-function Map.mapOr(map, key, transform, or)
+function Map.mapOr<K, V, U>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    transform: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+    or: U,
+): ReadonlyMap<K, V> | U
 ```
+
+Transforms the value at the specified key using the provided function, or returns the fallback value if the key doesn't exist.
 
 ## Example
 

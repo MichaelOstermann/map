@@ -1,25 +1,30 @@
 import { dfdlT } from "@monstermann/dfdl"
 
 /**
+ * # isEmpty
+ *
  * ```ts
- * function Map.isEmpty(map)
+ * function Map.isEmpty<T, U>(target: ReadonlyMap<T, U>): boolean
  * ```
+ *
+ * Checks whether the map is empty (contains no entries).
  *
  * ## Example
  *
- * ```ts
+ * ```ts [data-first]
  * import { Map } from "@monstermann/map";
  *
- * Map.isEmpty(Map.create()); // true
- * Map.isEmpty(Map.create([["a", 1]])); // false
+ * Map.isEmpty(new Map()); // true
+ * Map.isEmpty(new Map([["a", 1]])); // false
  * ```
  *
- * ```ts
+ * ```ts [data-last]
  * import { Map } from "@monstermann/map";
  *
- * pipe(Map.create(), Map.isEmpty()); // true
- * pipe(Map.create([["a", 1]]), Map.isEmpty()); // false
+ * pipe(new Map(), Map.isEmpty()); // true
+ * pipe(new Map([["a", 1]]), Map.isEmpty()); // false
  * ```
+ *
  */
 export const isEmpty: {
     (): <T, U>(target: ReadonlyMap<T, U>) => boolean

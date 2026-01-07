@@ -1,8 +1,12 @@
 # is
 
 ```ts
-function Map.is(target)
+function Map.is(
+    target: unknown,
+): target is Map<unknown, unknown>
 ```
+
+Type guard that checks whether a value is a Map instance.
 
 ## Example
 

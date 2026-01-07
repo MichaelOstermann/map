@@ -1,8 +1,18 @@
 # mapOrThrow
 
 ```ts
-function Map.mapOrThrow(map, key, transform)
+function Map.mapOrThrow<K, V>(
+    target: ReadonlyMap<K, V>,
+    key: NoInfer<K>,
+    transform: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+): ReadonlyMap<K, V>
 ```
+
+Transforms the value at the specified key using the provided function, or throws an error if the key doesn't exist.
 
 ## Example
 
