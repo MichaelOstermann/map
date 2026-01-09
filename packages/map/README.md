@@ -291,6 +291,272 @@ pipe(
 ); // 3
 ```
 
+### findMap
+
+```ts
+function Map.findMap<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    mapper: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+): ReadonlyMap<K, V>
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and applies the `mapper` function to it, returning a new map with the mapped value.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findMap(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+    (value) => value * 10,
+); // Map(3) { "a" => 1, "b" => 20, "c" => 3 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findMap(
+        (value) => value > 1,
+        (value) => value * 10,
+    ),
+); // Map(3) { "a" => 1, "b" => 20, "c" => 3 }
+```
+
+### findMapAll
+
+```ts
+function Map.findMapAll<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    mapper: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+): ReadonlyMap<K, V>
+```
+
+Finds all entries in the map that satisfy the provided `predicate` function and applies the `mapper` function to each of them, returning a new map with the mapped values.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findMapAll(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+    (value) => value * 10,
+); // Map(3) { "a" => 1, "b" => 20, "c" => 30 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findMapAll(
+        (value) => value > 1,
+        (value) => value * 10,
+    ),
+); // Map(3) { "a" => 1, "b" => 20, "c" => 30 }
+```
+
+### findMapOr
+
+```ts
+function Map.findMapOr<K, V, O>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    mapper: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+    or: O,
+): ReadonlyMap<K, V> | O
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and applies the `mapper` function to it, returning a new map with the mapped value, or `or` if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findMapOr(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 10,
+    (value) => value * 10,
+    new Map(),
+); // Map(0) {}
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findMapOr(
+        (value) => value > 10,
+        (value) => value * 10,
+        new Map(),
+    ),
+); // Map(0) {}
+```
+
+### findMapOrElse
+
+```ts
+function Map.findMapOrElse<K, V, O>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    mapper: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+    orElse: (target: ReadonlyMap<K, V>) => O,
+): ReadonlyMap<K, V> | O
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and applies the `mapper` function to it, returning a new map with the mapped value, or the result of calling `orElse` with the map if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findMapOrElse(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 10,
+    (value) => value * 10,
+    (map) => map.size,
+); // 3
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findMapOrElse(
+        (value) => value > 10,
+        (value) => value * 10,
+        (map) => map.size,
+    ),
+); // 3
+```
+
+### findMapOrThrow
+
+```ts
+function Map.findMapOrThrow<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    mapper: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => V,
+): ReadonlyMap<K, V>
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and applies the `mapper` function to it, returning a new map with the mapped value, or throws an error if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findMapOrThrow(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+    (value) => value * 10,
+); // Map(3) { "a" => 1, "b" => 20, "c" => 3 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findMapOrThrow(
+        (value) => value > 1,
+        (value) => value * 10,
+    ),
+); // Map(3) { "a" => 1, "b" => 20, "c" => 3 }
+```
+
 ### findOr
 
 ```ts

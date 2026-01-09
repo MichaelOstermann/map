@@ -9,6 +9,11 @@ import { compact } from "./compact.js";
 import { create } from "./create.js";
 import { filter } from "./filter.js";
 import { find } from "./find.js";
+import { findMap } from "./findMap.js";
+import { findMapAll } from "./findMapAll.js";
+import { findMapOr } from "./findMapOr.js";
+import { findMapOrElse } from "./findMapOrElse.js";
+import { findMapOrThrow } from "./findMapOrThrow.js";
 import { findOr } from "./findOr.js";
 import { findOrElse } from "./findOrElse.js";
 import { findOrThrow } from "./findOrThrow.js";
@@ -44,6 +49,11 @@ declare namespace Map {
         create,
         filter,
         find,
+        findMap,
+        findMapAll,
+        findMapOr,
+        findMapOrElse,
+        findMapOrThrow,
         findOr,
         findOrElse,
         findOrThrow,
