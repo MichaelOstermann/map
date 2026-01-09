@@ -17,6 +17,10 @@ import { findMapOrThrow } from "./findMapOrThrow.js";
 import { findOr } from "./findOr.js";
 import { findOrElse } from "./findOrElse.js";
 import { findOrThrow } from "./findOrThrow.js";
+import { findRemove } from "./findRemove.js";
+import { findRemoveOr } from "./findRemoveOr.js";
+import { findRemoveOrElse } from "./findRemoveOrElse.js";
+import { findRemoveOrThrow } from "./findRemoveOrThrow.js";
 import { forEach } from "./forEach.js";
 import { get } from "./get.js";
 import { getOr } from "./getOr.js";
@@ -57,6 +61,10 @@ declare namespace Map {
         findOr,
         findOrElse,
         findOrThrow,
+        findRemove,
+        findRemoveOr,
+        findRemoveOrElse,
+        findRemoveOrThrow,
         forEach,
         get,
         getOr,

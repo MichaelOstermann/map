@@ -693,6 +693,185 @@ pipe(
 ); // 3
 ```
 
+### findRemove
+
+```ts
+function Map.findRemove<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+): ReadonlyMap<K, V>
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and removes it, returning a new map without the removed entry.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findRemove(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+); // Map(2) { "a" => 1, "c" => 3 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findRemove((value) => value > 1),
+); // Map(2) { "a" => 1, "c" => 3 }
+```
+
+### findRemoveOr
+
+```ts
+function Map.findRemoveOr<K, V, O>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    or: O,
+): ReadonlyMap<K, V> | O
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and removes it, returning a new map without the removed entry, or `or` if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findRemoveOr(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 10,
+    new Map(),
+); // Map(0) {}
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findRemoveOr((value) => value > 10, new Map()),
+); // Map(0) {}
+```
+
+### findRemoveOrElse
+
+```ts
+function Map.findRemoveOrElse<K, V, O>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    orElse: (target: ReadonlyMap<K, V>) => O,
+): ReadonlyMap<K, V> | O
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and removes it, returning a new map without the removed entry, or the result of calling `orElse` with the map if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findRemoveOrElse(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 10,
+    (map) => map.size,
+); // 3
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findRemoveOrElse(
+        (value) => value > 10,
+        (map) => map.size,
+    ),
+); // 3
+```
+
+### findRemoveOrThrow
+
+```ts
+function Map.findRemoveOrThrow<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+): ReadonlyMap<K, V>
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and removes it, returning a new map without the removed entry, or throws an error if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findRemoveOrThrow(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+); // Map(2) { "a" => 1, "c" => 3 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findRemoveOrThrow((value) => value > 1),
+); // Map(2) { "a" => 1, "c" => 3 }
+```
+
 ### forEach
 
 ```ts
