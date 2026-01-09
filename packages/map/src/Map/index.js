@@ -7,6 +7,7 @@
 import { clone } from "./clone.js";
 import { compact } from "./compact.js";
 import { create } from "./create.js";
+import { every } from "./every.js";
 import { filter } from "./filter.js";
 import { find } from "./find.js";
 import { findMap } from "./findMap.js";
@@ -42,6 +43,7 @@ import { mapEach } from "./mapEach.js";
 import { mapOr } from "./mapOr.js";
 import { mapOrElse } from "./mapOrElse.js";
 import { mapOrThrow } from "./mapOrThrow.js";
+import { none } from "./none.js";
 import { reject } from "./reject.js";
 import { remove } from "./remove.js";
 import { removeAll } from "./removeAll.js";
@@ -49,11 +51,13 @@ import { removeOr } from "./removeOr.js";
 import { removeOrElse } from "./removeOrElse.js";
 import { removeOrThrow } from "./removeOrThrow.js";
 import { set } from "./set.js";
+import { some } from "./some.js";
 
 export const Map = {
     clone,
     compact,
     create,
+    every,
     filter,
     find,
     findMap,
@@ -89,6 +93,7 @@ export const Map = {
     mapOr,
     mapOrElse,
     mapOrThrow,
+    none,
     reject,
     remove,
     removeAll,
@@ -96,4 +101,5 @@ export const Map = {
     removeOrElse,
     removeOrThrow,
     set,
+    some,
 }
