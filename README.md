@@ -872,6 +872,194 @@ pipe(
 ); // Map(2) { "a" => 1, "c" => 3 }
 ```
 
+### findReplace
+
+```ts
+function Map.findReplace<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    replacement: NoInfer<V>,
+): ReadonlyMap<K, V>
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and replaces its value with `replacement`, returning a new map with the replaced value.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findReplace(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+    10,
+); // Map(3) { "a" => 1, "b" => 10, "c" => 3 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findReplace((value) => value > 1, 10),
+); // Map(3) { "a" => 1, "b" => 10, "c" => 3 }
+```
+
+### findReplaceOr
+
+```ts
+function Map.findReplaceOr<K, V, O>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    replacement: NoInfer<V>,
+    or: O,
+): ReadonlyMap<K, V> | O
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and replaces its value with `replacement`, returning a new map with the replaced value, or `or` if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findReplaceOr(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 10,
+    99,
+    new Map(),
+); // Map(0) {}
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findReplaceOr((value) => value > 10, 99, new Map()),
+); // Map(0) {}
+```
+
+### findReplaceOrElse
+
+```ts
+function Map.findReplaceOrElse<K, V, O>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    replacement: NoInfer<V>,
+    orElse: (target: ReadonlyMap<K, V>) => O,
+): ReadonlyMap<K, V> | O
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and replaces its value with `replacement`, returning a new map with the replaced value, or the result of calling `orElse` with the map if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findReplaceOrElse(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 10,
+    99,
+    (map) => map.size,
+); // 3
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findReplaceOrElse(
+        (value) => value > 10,
+        99,
+        (map) => map.size,
+    ),
+); // 3
+```
+
+### findReplaceOrThrow
+
+```ts
+function Map.findReplaceOrThrow<K, V>(
+    target: ReadonlyMap<K, V>,
+    predicate: (
+        value: NoInfer<V>,
+        key: NoInfer<K>,
+        target: ReadonlyMap<K, V>,
+    ) => boolean,
+    replacement: NoInfer<V>,
+): ReadonlyMap<K, V>
+```
+
+Finds the first entry in the map that satisfies the provided `predicate` function and replaces its value with `replacement`, returning a new map with the replaced value, or throws an error if no entry is found.
+
+#### Example
+
+```ts [data-first]
+import { Map } from "@monstermann/map";
+
+Map.findReplaceOrThrow(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    (value) => value > 1,
+    99,
+); // Map(3) { "a" => 1, "b" => 99, "c" => 3 }
+```
+
+```ts [data-last]
+import { Map } from "@monstermann/map";
+
+pipe(
+    new Map([
+        ["a", 1],
+        ["b", 2],
+        ["c", 3],
+    ]),
+    Map.findReplaceOrThrow((value) => value > 1, 99),
+); // Map(3) { "a" => 1, "b" => 99, "c" => 3 }
+```
+
 ### forEach
 
 ```ts
