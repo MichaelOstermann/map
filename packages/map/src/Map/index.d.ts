@@ -8,6 +8,10 @@ import { clone } from "./clone.js";
 import { compact } from "./compact.js";
 import { create } from "./create.js";
 import { filter } from "./filter.js";
+import { find } from "./find.js";
+import { findOr } from "./findOr.js";
+import { findOrElse } from "./findOrElse.js";
+import { findOrThrow } from "./findOrThrow.js";
 import { forEach } from "./forEach.js";
 import { get } from "./get.js";
 import { getOr } from "./getOr.js";
@@ -39,6 +43,10 @@ declare namespace Map {
         compact,
         create,
         filter,
+        find,
+        findOr,
+        findOrElse,
+        findOrThrow,
         forEach,
         get,
         getOr,
