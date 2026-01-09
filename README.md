@@ -2,7 +2,7 @@
 
 <h1>map</h1>
 
-![Minified](https://img.shields.io/badge/Minified-3.43_KB-blue?style=flat-square&labelColor=%2315161D&color=%2369a1ff) ![Minzipped](https://img.shields.io/badge/Minzipped-1.03_KB-blue?style=flat-square&labelColor=%2315161D&color=%2369a1ff)
+![Minified](https://img.shields.io/badge/Minified-5.87_KB-blue?style=flat-square&labelColor=%2315161D&color=%2369a1ff) ![Minzipped](https://img.shields.io/badge/Minzipped-1.42_KB-blue?style=flat-square&labelColor=%2315161D&color=%2369a1ff)
 
 **Functional utilities for maps.**
 

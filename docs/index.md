@@ -6,12 +6,12 @@ aside: true
 
 <Badge type="info" class="size">
     <span>Minified</span>
-    <span>3.43 KB</span>
+    <span>5.87 KB</span>
 </Badge>
 
 <Badge type="info" class="size">
     <span>Minzipped</span>
-    <span>1.03 KB</span>
+    <span>1.42 KB</span>
 </Badge>
 
 **Functional utilities for maps.**
